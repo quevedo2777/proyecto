@@ -123,6 +123,17 @@ def duracion_promedio_peliculas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
     return ""
+    duracion= p1["duracion"] + p2["duracion"] + p3["duracion"] + p4["duracion"] + p5["duracion"]
+
+    promedio= duracion // 5 
+
+    horas = promedio // 60
+    minutos = promedio % 60
+
+    if minutos < 10:
+        return str(horas) + ":0" + str(minutos)
+    else:
+        return str(horas) + ":" + str(minutos)
 
 def encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, anio: int) -> str:
     """Busca entre las peliculas cuales tienen como anio de estreno una fecha estrictamente
@@ -139,9 +150,15 @@ def encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, anio: i
         Si hay mas de una pelicula, entonces se retornan los nombres de todas las peliculas 
         encontradas separadas por comas. Si ninguna pelicula coincide, retorna "Ninguna".
     """
-    #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    return ""
+    lista_estrenos=[]
+    lista_anios=[p1,p2,p3,p4,p5]
+    for i in lista_anios:
+        if i['anio'] > anio:
+            lista_estrenos=[].append(i['nombre'])
+    return print(lista_estrenos,anio)
+        
 
+    #TODO: completar y remplazar la siguiente línea por el resultado correcto 
 def cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict) -> int:
     """Indica cuantas peliculas de clasificación '18+' hay entre los diccionarios recibidos.
     Parametros:
@@ -154,8 +171,12 @@ def cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict) -
         int: Numero de peliculas con clasificacion '18+'
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    return -1
-
+    lista=[p1,p2,p3,p4,p5]
+    pelis_mas18=[]
+    for i in lista:
+        if i['clasificacion'] == '+18':
+            pelis_mas18=[].append(i['clasificacion'])
+    return len(pelis_mas18)
 def reagendar_pelicula(peli:dict, nueva_hora: int, nuevo_dia: str, 
                        control_horario: bool, p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->bool: 
     """Verifica si es posible reagendar la pelicula que entra por parametro. Para esto verifica
@@ -177,7 +198,29 @@ def reagendar_pelicula(peli:dict, nueva_hora: int, nuevo_dia: str,
         bool: True en caso de que se haya podido reagendar la pelicula, False de lo contrario.
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    return False
+    peliculas = [p1, p2, p3, p4, p5]
+
+    for p in peliculas:
+        if p != peli:
+            if p["dia"] == nuevo_dia and p["hora"] == nueva_hora:
+                return False
+
+    if control_horario:
+
+        if "Documental" in peli["genero"] and nueva_hora >= 2200:
+            return False
+
+        if "Drama" in peli["genero"] and nuevo_dia == "Viernes":
+            return False
+
+        if nuevo_dia in ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]:
+            if nueva_hora >= 2300 or nueva_hora < 600:
+                return False
+
+    peli["hora"] = nueva_hora
+    peli["dia"] = nuevo_dia
+
+    return True
     
 def decidir_invitar(peli: dict, edad_invitado: int, autorizacion_padres: bool)->bool:
     """Verifica si es posible invitar a la persona cuya edad entra por parametro a ver la 
@@ -192,7 +235,25 @@ def decidir_invitar(peli: dict, edad_invitado: int, autorizacion_padres: bool)->
         bool: True en caso de que se pueda invitar a la persona, False de lo contrario.
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    return False
+    if edad_invitado >= 18:
+        return True
+
+    if edad_invitado <= 10:
+        if "Familiar" in peli["genero"]:
+            return True
+        else:
+            return False
+
+    if edad_invitado < 15 and "Terror" in peli["genero"]:
+        return False
+
+    if edad_invitado < peli["clasificacion"]:
+        if "Documental" in peli["genero"]:
+            return True
+        else:
+            return autorizacion_padres
+
+    return True
 
 
 
