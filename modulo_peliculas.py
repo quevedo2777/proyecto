@@ -41,12 +41,16 @@ def crear_pelicula(nombre: str, genero: str, duracion: int, anio: int,
         dict: Diccionario con los datos de la pelicula
     """    
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    p1={'nombre': 'Shrek', 'genero': 'Familiar, Comedia', 'duracion': 92, 'anio': 2001, 'clasificacion': 'Todos', 'hora': 1700, 'dia': 'Viernes'}
-    p2={'nombre': 'Get Out', 'genero': 'Suspenso, Terror', 'duracion': 104, 'anio': 2017, 'clasificacion': '+18', 'hora': 2330, 'dia': 'Sábado'}
-    p3={'nombre': 'Icarus', 'genero': 'Documental, Suspenso', 'duracion': 122, 'anio': 2017, 'clasificacion': '+18', 'hora': 800, 'dia': 'Domingo'}
-    p4={'nombre': 'Inception', 'genero': 'Acción, Drama', 'duracion': 148, 'anio': 2010, 'clasificacion': '+13', 'hora': 1300, 'dia': 'Lunes'}
-    p5={'nombre': 'The Empire Strikes Back', 'genero': 'Familiar, Ciencia-Ficción', 'duracion': 124, 'anio': 1980, 'clasificacion': '7+', 'hora': 1415, 'dia': 'Miércoles'}
-    return None
+    pelicula = {
+        "nombre": nombre,
+        "genero": genero,
+        "duracion": duracion,
+        "anio": anio,
+        "clasificacion": clasificacion,
+        "hora": hora,
+        "dia": dia
+    }
+    return pelicula
 
 def encontrar_pelicula(nombre_pelicula: str, p1: dict, p2: dict, p3: dict, p4: dict,  p5: dict) -> dict:
     """Encuentra en cual de los 5 diccionarios que se pasan por parametro esta la 
@@ -122,7 +126,6 @@ def duracion_promedio_peliculas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
         str: la duracion promedio de las peliculas en formato 'HH:MM'
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    return ""
     duracion= p1["duracion"] + p2["duracion"] + p3["duracion"] + p4["duracion"] + p5["duracion"]
 
     promedio= duracion // 5 

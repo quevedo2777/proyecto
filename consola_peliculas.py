@@ -28,7 +28,7 @@ def mostrar_informacion_pelicula(pelicula: dict)-> None:
             - clasificacion (str): Clasificacion de restriccion por edad
             - hora (int): Hora de inicio de la pelicula
             - dia (str): Indica que dia de la semana se planea ver la pelicula
-    """       
+    """      
     nombre = pelicula["nombre"]
     genero = pelicula["genero"]
     duracion = pelicula["duracion"]
