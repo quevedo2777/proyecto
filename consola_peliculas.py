@@ -61,7 +61,13 @@ def ejecutar_encontrar_pelicula_mas_larga(p1: dict, p2: dict, p3: dict, p4: dict
         p4 (dict): Diccionario que contiene la informacion de la pelicula 4.
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
-   # TODO: Completar
+   # TODO: Completa
+    pelicula = mod.encontrar_pelicula_mas_larga(p1, p2, p3, p4, p5)
+    
+    if pelicula is not None:
+        print(pelicula)
+    else:
+        print("No se pudo determinar la pelicula mas larga")
 
 def ejecutar_consultar_duracion_promedio_peliculas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """Ejecuta la opcion de consultar la duracion promedio de las peliculas.
@@ -73,6 +79,9 @@ def ejecutar_consultar_duracion_promedio_peliculas(p1: dict, p2: dict, p3: dict,
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completar
+    duracion_p = mod.duracion_promedio_peliculas(p1, p2, p3, p4, p5)
+
+    print(duracion_p)
 
 def ejecutar_encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """ Ejecuta la opcion de buscar peliculas de estreno. Esto es: las peliculas que sean 
@@ -85,6 +94,9 @@ def ejecutar_encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completar
+    anio = int(input("ingrese el año a partir para el cual desea buscar estrenos"))
+    estrenos = mod.encontrar_estrenos(p1, p2, p3, p4, p5, anio)
+    print(estrenos)
 
 def ejecutar_cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """Ejecuta la opcion de consultar cuantas peliculas de la agenda tienen clasificacion
@@ -97,6 +109,9 @@ def ejecutar_cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completar
+    print("peliculas 18+")
+    mas_18 = mod.cuantas_peliculas_18_mas(p1, p2, p3, p4, p5)
+    print(mas_18)
     
 def ejecutar_reagendar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """Ejecuta la opcion de reagendar una pelicula
@@ -115,6 +130,20 @@ def ejecutar_reagendar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
     if pelicula is None:
         print("No hay ninguna pelicula con este nombre")
     # TODO: Completar
+    else:
+        nueva_hora = int(input("Ingrese la nueva hora (HHMM): "))
+        nuevo_dia = input("Ingrese el nuevo dia: ")
+        control = input("Desea aplicar control horario? (s/n): ").strip().lower()
+    
+        control_horario = True if control == "s" else False
+
+        exito = mod.reagendar_pelicula(pelicula, nueva_hora, nuevo_dia, control_horario, p1, p2, p3, p4, p5)
+
+        if exito:
+            print("La pelicula fue reagendada correctamente")
+            mostrar_informacion_pelicula(pelicula)
+        else:
+            print("No fue posible reagendar la pelicula")
 
 def ejecutar_decidir_invitar(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """Ejecuta la opcion de decidir si se puede invitar a alguien a ver una pelicula o no.
@@ -133,6 +162,18 @@ def ejecutar_decidir_invitar(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->
     if pelicula is None:
         print("No hay ninguna pelicula con este nombre")
    # TODO: Completar
+    else:
+        edad_invitado = int(input("ingrese la edad del invitado: "))
+        autorizacion = input("Tiene autorizacion de los padres? (s/n): ").strip().lower()
+
+        autorizacion_padres = True if autorizacion == "s" else False
+
+        permiso = mod.decidir_invitar(pelicula, edad_invitado, autorizacion_padres)
+
+        if permiso:
+            print("Se puede invitar a la persona")
+        else:
+            print("No se puede invitar a la persona")
   
 def iniciar_aplicacion():
     """Inicia la ejecución de la aplicación por consola.
