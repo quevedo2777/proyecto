@@ -239,23 +239,22 @@ def decidir_invitar(peli: dict, edad_invitado: int, autorizacion_padres: bool)->
         bool: True en caso de que se pueda invitar a la persona, False de lo contrario.
     """
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
-    if edad_invitado >= 18:
+    clasificacion = peli["clasificacion"]
+
+    if clasificacion == "Todos":
         return True
 
-    if edad_invitado <= 10:
-        if "Familiar" in peli["genero"]:
-            return True
-        else:
-            return False
+    if clasificacion == "18+":
+        return edad_invitado >= 18
 
-    if edad_invitado < 15 and "Terror" in peli["genero"]:
-        return False
-
-    if edad_invitado < peli["clasificacion"]:
-        if "Documental" in peli["genero"]:
+    if clasificacion == "13+":
+        if edad_invitado >= 13:
             return True
         else:
             return autorizacion_padres
+
+    if clasificacion == "7+":
+        return edad_invitado >= 7 or autorizacion_padres
 
     return True
 
