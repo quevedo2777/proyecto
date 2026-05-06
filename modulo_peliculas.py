@@ -1,5 +1,5 @@
 """
-Agenda de peliculas.
+Agenda de pelicula.
 Módulo de cálculos.
 
 Temas:
@@ -153,13 +153,14 @@ def encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, anio: i
         Si hay mas de una pelicula, entonces se retornan los nombres de todas las peliculas 
         encontradas separadas por comas. Si ninguna pelicula coincide, retorna "Ninguna".
     """
-    lista_estrenos=[]
-    lista_anios=[p1,p2,p3,p4,p5]
-    for i in lista_anios:
-        if i['anio'] > anio:
-            lista_estrenos=[].append(i['nombre'])
-    return print(lista_estrenos,anio)
-        
+    peliculas=[p1,p2,p3,p4,p5]
+    estrenos=[]
+    for i in peliculas:
+        if i['anio'] == anio:
+            estrenos.append(i['nombre'])
+    if not estrenos:
+        return None
+    return estrenos
 
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
 def cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict) -> int:
