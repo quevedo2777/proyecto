@@ -178,8 +178,8 @@ def cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict) -
     lista=[p1,p2,p3,p4,p5]
     pelis_mas18=[]
     for i in lista:
-        if i['clasificacion'] == '+18':
-            pelis_mas18=[].append(i['clasificacion'])
+        if i['clasificacion'] == '18+':
+            pelis_mas18.append(i['clasificacion'])
     return len(pelis_mas18)
 def reagendar_pelicula(peli:dict, nueva_hora: int, nuevo_dia: str, 
                        control_horario: bool, p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->bool: 
