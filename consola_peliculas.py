@@ -174,6 +174,17 @@ def ejecutar_decidir_invitar(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->
             print("Se puede invitar a la persona")
         else:
             print("No se puede invitar a la persona")
+
+def ejecutar_encontrar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
+    nombre_pelicula = input("buscar informacion de la pelicula: ")
+
+    peli = mod.encontrar_pelicula(nombre_pelicula, p1, p2, p3, p4, p5)
+
+    if peli == None:
+        print("El nombre es invalido")
+    else:
+        print(peli)
+    
   
 def iniciar_aplicacion():
     """Inicia la ejecución de la aplicación por consola.
@@ -235,8 +246,9 @@ def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict) -> b
     print(" 3 - Consultar peliculas de estreno")
     print(" 4 - Consultar cuantas peliculas tienen clasificacion 18+")
     print(" 5 - Reagendar pelicula")
-    print(" 6 - Verificar si se puede invitar a alguien")    
-    print(" 7 - Salir de la aplicacion")
+    print(" 6 - Verificar si se puede invitar a alguien")
+    print(" 7 - encontar pelicula")    
+    print(" 8 - Salir de la aplicacion")
 
     opcion_elegida = input("Ingrese la opcion que desea ejecutar: ").strip()
     
@@ -255,6 +267,8 @@ def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict) -> b
     elif opcion_elegida == "6":
         ejecutar_decidir_invitar(p1, p2, p3, p4, p5) 
     elif opcion_elegida == "7":
+        ejecutar_encontrar_pelicula(p1, p2, p3, p4, p5)
+    elif opcion_elegida == "8":
         continuar_ejecutando = False
     else:
         print("La opcion " + opcion_elegida + " no es una opcion valida.")
