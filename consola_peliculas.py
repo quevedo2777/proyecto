@@ -62,12 +62,12 @@ def ejecutar_encontrar_pelicula_mas_larga(p1: dict, p2: dict, p3: dict, p4: dict
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completa
-    pelicula = mod.encontrar_pelicula_mas_larga(p1, p2, p3, p4, p5)
+    pelicula = mod.encontrar_pelicula_mas_larga(p1, p2, p3, p4, p5) #llamamos a la funcion del modulo que analizara todas las peliculas y nos dara en esta variable la mas larga
     
     if pelicula is not None:
-        print(pelicula)
+        print(pelicula) #imprimimos la mas pelicula mas larga
     else:
-        print("No se pudo determinar la pelicula mas larga")
+        print("No se pudo determinar la pelicula mas larga")#En caso de algun fallo como un nombre incorrecto
 
 def ejecutar_consultar_duracion_promedio_peliculas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
     """Ejecuta la opcion de consultar la duracion promedio de las peliculas.
@@ -94,8 +94,9 @@ def ejecutar_encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completar
-    anio = int(input("ingrese el año a partir para el cual desea buscar estrenos"))
-    estrenos = mod.encontrar_estrenos(p1, p2, p3, p4, p5, anio)
+    anio = int(input("ingrese el año a partir para el cual desea buscar estrenos: "))#pedimos una fecha a partir de la cual empezamos a buscar los estrenos
+    estrenos = mod.encontrar_estrenos(p1, p2, p3, p4, p5, anio)#usamos la funcion del modulo
+    
     print(estrenos)
 
 def ejecutar_cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
@@ -109,7 +110,7 @@ def ejecutar_cuantas_peliculas_18_mas(p1: dict, p2: dict, p3: dict, p4: dict, p5
         p5 (dict): Diccionario que contiene la informacion de la pelicula 5.
     """
    # TODO: Completar
-    print("peliculas 18+")
+    print("peliculas +18")
     mas_18 = mod.cuantas_peliculas_18_mas(p1, p2, p3, p4, p5)
     print(mas_18)
     
@@ -130,7 +131,7 @@ def ejecutar_reagendar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
     if pelicula is None:
         print("No hay ninguna pelicula con este nombre")
     # TODO: Completar
-    else:
+    else:#pedimos las variables necesarias para usar la funcion del modulo reagendar pelicula
         nueva_hora = int(input("Ingrese la nueva hora (HHMM): "))
         nuevo_dia = input("Ingrese el nuevo dia: ")
         control = input("Desea aplicar control horario? (s/n): ").strip().lower()
@@ -139,7 +140,7 @@ def ejecutar_reagendar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict
 
         exito = mod.reagendar_pelicula(pelicula, nueva_hora, nuevo_dia, control_horario, p1, p2, p3, p4, p5)
 
-        if exito:
+        if exito:# si la funcion retorna true
             print("La pelicula fue reagendada correctamente")
             mostrar_informacion_pelicula(pelicula)
         else:
@@ -163,22 +164,22 @@ def ejecutar_decidir_invitar(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->
         print("No hay ninguna pelicula con este nombre")
    # TODO: Completar
     else:
-        edad_invitado = int(input("ingrese la edad del invitado: "))
-        autorizacion = input("Tiene autorizacion de los padres? (s/n): ").strip().lower()
+        edad_invitado = int(input("ingrese la edad del invitado: ")) #pedimos la edad
+        autorizacion = input("Tiene autorizacion de los padres? (s/n): ").strip().lower() #pedimos saber si tiene autorizacion
 
-        autorizacion_padres = True if autorizacion == "s" else False
+        autorizacion_padres = True if autorizacion == "s" else False # segun el permiso la variable se vuelve true o false lo que ayuda a ejecutar la funcion del modulo
 
-        permiso = mod.decidir_invitar(pelicula, edad_invitado, autorizacion_padres)
+        permiso = mod.decidir_invitar(pelicula, edad_invitado, autorizacion_padres) #llamamos a la funcion del modulo y esta nos devolvera un true o false
 
-        if permiso:
+        if permiso: #es true
             print("Se puede invitar a la persona")
-        else:
+        else: #es false
             print("No se puede invitar a la persona")
 
 def ejecutar_encontrar_pelicula(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->None:
-    nombre_pelicula = input("buscar informacion de la pelicula: ")
+    nombre_pelicula = input("buscar informacion de la pelicula: ") 
 
-    peli = mod.encontrar_pelicula(nombre_pelicula, p1, p2, p3, p4, p5)
+    peli = mod.encontrar_pelicula(nombre_pelicula, p1, p2, p3, p4, p5) #llamamos a la funcion del modulo para ver si el nombre es igual a alguna pelicula
 
     if peli == None:
         print("El nombre es invalido")

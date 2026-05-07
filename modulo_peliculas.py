@@ -166,10 +166,10 @@ def encontrar_estrenos(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, anio: i
     estrenos=[]
     #iteramos para buscar el valor de la clave anios
     for i in peliculas:
-        if i['anio'] == anio:
+        if i['anio'] > anio:
             estrenos.append(i['nombre'])#guradamos el nombre de la pelicula con la fecha de estreno soliciada
     if not estrenos:#verificamos que la lista no este vacia
-        return None
+        return "Ninguna"
     return estrenos
 
     #TODO: completar y remplazar la siguiente línea por el resultado correcto 
